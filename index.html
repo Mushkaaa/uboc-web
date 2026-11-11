@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="preload" href="/fonts/anybody-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/anybody-latin-ext-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        var q = new URLSearchParams(location.search).get('tier');
+        if (q === 'static' || q === 'low' || q === 'high') d.dataset.tier = q;
+        else if (matchMedia('(prefers-reduced-motion: reduce)').matches) d.dataset.tier = 'static';
+        try { if (sessionStorage.getItem('uboc-intro') || q === 'static' || new URLSearchParams(location.search).has('nointro')) d.classList.add('no-intro'); } catch (e) {}
+      })();
+    </script>
+    <!--head-->
+  </head>
+  <body>
+    <!--app-->
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
